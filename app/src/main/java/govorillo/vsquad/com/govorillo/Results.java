@@ -1,8 +1,11 @@
 package govorillo.vsquad.com.govorillo;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.Space;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +24,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,6 +52,7 @@ public class Results extends AppCompatActivity
     private boolean isfirst = true;
     private int newxp;
     private String s = "";
+    //Intent toMain = new Intent(this, MainActivity.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +62,10 @@ public class Results extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        tvpoints = (TextView) findViewById(R.id.tvpoints);
-        famouspersonsspeak = (TextView) findViewById(R.id.famouspersonspeak);
-        MainButton = (ImageView) findViewById(R.id.mbut);
 
+        tvpoints = (TextView) findViewById(R.id.tvpoints);
+        String keytostring = "text";
+        //s = getIntent().getExtras().getString("id1");
         final Bundle bundle = getIntent().getExtras();
         if (bundle!=null){
             xp = bundle.getInt("xp");
@@ -93,7 +98,8 @@ public class Results extends AppCompatActivity
         int result2 = (100-(int) Math.ceil(repeats/textlength)-10);
         double result3 = ((1.3-(Math.abs(1.3-textspeed)))*65);
         result = (int)Math.ceil(result1+result2+(int)result3)/3;
-        tvpoints.setText("+ " + (int)Math.ceil(Math.abs(result)) + " баллов!");
+        String res = String.valueOf((int)Math.ceil(Math.abs(result)));
+        tvpoints.setText(res+"/100");
         if (isfirst == true) {
             xp+=(int)Math.ceil(Math.abs(result));
             isfirst = false;
@@ -120,11 +126,6 @@ public class Results extends AppCompatActivity
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
-        if (result >= 90) famouspersonsspeak.setText("ЛИНКОЛЬН");
-        if (result >= 70 && result < 90) famouspersonsspeak.setText("ЧЕРЧИЛЬ");
-        if (result >= 55 && result < 70) famouspersonsspeak.setText("ДОНАЛЬД ТРАМП");
-        if (result >= 35 && result < 55) famouspersonsspeak.setText("ЖИРИНОВСКИЙ");
-        if (result < 35) famouspersonsspeak.setText("ВИТАЛИЙ КЛИЧКО");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -134,10 +135,51 @@ public class Results extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        System.out.println(textlength);
+        System.out.println(repeats);
+        System.out.println(textspeed);
+        System.out.println(errors_in_text);
+        System.out.println(xp);
+        System.out.println(isfirst);
+        System.out.println(s);
     }
+
+    public void toKim(View view){
+        Intent toKim = new Intent(Intent.ACTION_VIEW, Uri.parse("https://vk.com/im?peers=157255681&sel=191940564"));
+        startActivity(toKim);
+    }
+
+    public void toMain(View view){
+        Intent toMain = new Intent(view.getContext(), MainActivity.class);
+        startActivity(toMain);
+    }
+
+    public void toTrainer(View view){
+        Intent toTrainer = new Intent(view.getContext(), Trainer.class);
+        startActivity(toTrainer);
+    }
+
+    // ТУТ ПОДРОБНЕЕ НУЖНО
+    public void toPartners(View view){
+        Intent toPartners = new Intent(view.getContext(), More.class);
+
+        toPartners.putExtra("textlength",textlength);
+        toPartners.putExtra("repeats",repeats);
+        toPartners.putExtra("textspeed",textspeed);
+        toPartners.putExtra("errors_in_text",errors_in_text);
+        toPartners.putExtra("xp",xp);
+        toPartners.putExtra("isfirst", isfirst);
+        toPartners.putExtra("text", s);
+
+        startActivity(toPartners);
+    }
+
+
 
     @Override
     protected void onStop() {
+
         super.onStop();
         sPref = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sPref.edit();

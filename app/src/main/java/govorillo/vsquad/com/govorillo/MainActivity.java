@@ -166,7 +166,6 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -214,7 +213,7 @@ public class MainActivity extends AppCompatActivity
             myseconds = 0;
             if (v.getId() == R.id.mbut) {
                 TextView result = (TextView) findViewById(R.id.resultText);
-                MainButton.setImageResource(R.drawable.stopb);
+                MainButton.setImageResource(R.drawable.stop);
                 startRec();
             }
         } else
@@ -236,7 +235,6 @@ public class MainActivity extends AppCompatActivity
         if (ContextCompat.checkSelfPermission(context, RECORD_AUDIO) != PERMISSION_GRANTED) {
             requestPermissions(new String[]{RECORD_AUDIO}, 1);
         } else {
-            mStreamId = VStart.play(mSoundId, leftVolume, rightVolume, priority, no_loop, normal_playback_rate);
             resetRecognizer();
             recognizer = Recognizer.create(Recognizer.Language.RUSSIAN, Recognizer.Model.NOTES, listener, true);
             recognizer.start();
@@ -289,6 +287,8 @@ public class MainActivity extends AppCompatActivity
         mas = s.split(" ");
         if (mas[0] == "" && mas.length == 1) {
             Toast.makeText(this, "Распознать Вашу речь не удалось.", Toast.LENGTH_SHORT).show();
+            whatButton = 1;
+            MainButton.setImageResource(R.drawable.mainmicro);
         } else {
 
             textspeed = (double) mas.length / (double) myseconds;
@@ -446,16 +446,9 @@ public class MainActivity extends AppCompatActivity
             toResults.putExtra("textlength", mas.length);
             toResults.putExtra("xp", xp);
             toResults.putExtra("isfirst", true);
-            toResults.putExtra("text", s);
+            toResults.putExtra("text",s);
             startActivity(toResults);
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
     }
 
     @Override

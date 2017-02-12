@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_results"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="govorillo.vsquad.com.govorillo.Results"
+    tools:showIn="@layout/app_bar_results"
+    android:background="@drawable/result"
+    android:weightSum="1">
+
+    <TextView
+        android:text="@string/_90_100"
+        android:layout_width="match_parent"
+        android:layout_height="112dp"
+        android:id="@+id/tvpoints"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="100sp"
+        android:textStyle="normal|bold"
+        android:textAlignment="center" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:background="@drawable/opacity0"
+        android:layout_weight="0.10"
+        android:onClick="toPartners" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button12"
+        android:background="@drawable/opacity0"
+        android:layout_weight="0.12"
+        android:onClick="toTrainer" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4"
+        android:layout_weight="0.80"
+        android:background="@drawable/opacity0" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="89dp"
+        android:id="@+id/button"
+        android:onClick="toMain"
+        style="@style/Widget.AppCompat.Button"
+        android:visibility="visible"
+        android:minHeight="0dp"
+        android:elevation="10dp"
+        tools:ignore="UnusedAttribute"
+        android:background="@drawable/opacity0" />
+
+</LinearLayout>

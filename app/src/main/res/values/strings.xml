@@ -6,4 +6,10 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_results">Results</string>
+    <string name="_90_100">90/100</string>
+    <string name="iiii">iiii</string>
+    <string name="title_activity_partners">Partners</string>
+    <string name="title_activity_trainers">Trainers</string>
+    <string name="title_activity_trainer">Trainer</string>
+    <string name="title_activity_more">More</string>
 </resources>

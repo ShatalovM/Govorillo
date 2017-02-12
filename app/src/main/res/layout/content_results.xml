@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_results"
+    android:layout_weight="1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -11,43 +12,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="govorillo.vsquad.com.govorillo.Results"
-    tools:showIn="@layout/app_bar_results">
+    tools:showIn="@layout/app_bar_results"
+    android:background="@drawable/result">
 
     <TextView
-        android:text="0"
-        android:layout_width="wrap_content"
+        android:text="@string/_90_100"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="46dp"
-        android:layout_marginStart="46dp"
         android:id="@+id/tvpoints"
         android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textSize="50sp"
+        android:textSize="100sp"
         android:textStyle="normal|bold"
-        tools:ignore="HardcodedText" />
+        android:textAlignment="center" />
 
-    <TextView
-        android:text="Вы говорите как..."
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvpoints"
-        android:layout_toRightOf="@+id/tvpoints"
-        android:layout_toEndOf="@+id/tvpoints"
-        android:layout_marginLeft="101dp"
-        android:layout_marginStart="101dp"
-        android:layout_marginBottom="13dp"
-        android:id="@+id/famouspersonspeak"
-        tools:ignore="HardcodedText" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ysk_ic_russia"
-        android:layout_marginTop="121dp"
-        android:id="@+id/mbut"
-        android:layout_below="@+id/famouspersonspeak"
-        android:layout_centerHorizontal="true"
-        tools:ignore="ContentDescription" />
-</RelativeLayout>
+</LinearLayout>

@@ -21,6 +21,18 @@
         <activity
             android:name=".Results"
             android:label="@string/title_activity_results"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Partners"
+            android:label="@string/title_activity_partners"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Trainer"
+            android:label="@string/title_activity_trainer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".More"
+            android:label="@string/title_activity_more"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
